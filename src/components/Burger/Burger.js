@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import classes from './Burger.css';
 import BurgerIngredient from './Burgeringredient/Burgeringredient';
-import Aux from '../../hoc/Auxillary';
 
-class Burger extends Component {
-    render(){
-        return(
-            <Aux>
-                <BurgerIngredient type="bread-top" />
-                <BurgerIngredient type="meat" />
-                <BurgerIngredient type="cheese" />
-                <BurgerIngredient type="bacon" />
-                <BurgerIngredient type="salad" />
-                <BurgerIngredient type="bread-bottom" />
-            </Aux>
-        );
-    }
+const burger =  props => {
+    return(
+        <div className ={classes.Burger}>
+            <BurgerIngredient type="bread-top" />
+            <BurgerIngredient type="cheese" />
+            <BurgerIngredient type="meat" />
+            <BurgerIngredient type="bacon" />
+            <BurgerIngredient type="salad" />
+            <BurgerIngredient type="bread-bottom" />
+
+        </div>
+    );
 }
 
-export default Burger;
+export default burger;
