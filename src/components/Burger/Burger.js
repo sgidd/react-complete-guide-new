@@ -20,8 +20,8 @@ const burger =  props => {
         transformedIngredients = <p style={{textAlign:'center'}}>Please add the ingredients to build burger!</p>
     }
 
-    let reduceArray = [[1,2] , [2,4]].reduce( (arr,el) => { return arr.concat(el)} , []) ;
-    console.log(reduceArray);
+    // let reduceArray = [[1,2] , [2,4]].reduce( (arr,el) => { return arr.concat(el)} , []) ;
+    // console.log(reduceArray);
 
     return(
         <div className ={classes.Burger}>
