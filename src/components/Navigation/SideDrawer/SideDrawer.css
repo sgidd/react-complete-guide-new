@@ -1,0 +1,35 @@
+.SideDrawer{
+    position:fixed;
+    width: 200px;
+    max-width: 70%; /*so that in very narrow screen also it do not over crosee */
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 200; /*more than backdrop */
+    background-color: white;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    transition: transfrom 0.3s ease-out; /*to open or close side drawer */
+}
+
+/* to make it only visible on mobile devices not on bigger */
+@media(min-width: 500px){
+    .SideDrawer{
+        display: none;
+    }
+}
+
+.Open {
+    transform: translateX(0); 
+    /* this will shift it to the position declared in .sidedrawer class  */
+}
+
+.Close{
+    transform: translateX(-100%)
+    /* this will shift sidedrawer to left before screen  */
+}
+
+.Logo{
+    height: 11%;
+    margin-bottom: 32px;
+}
