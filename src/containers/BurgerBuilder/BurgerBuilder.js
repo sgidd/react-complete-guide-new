@@ -92,6 +92,10 @@ class BurgerBuilder extends Component {
     purchaseContinueHandler = () =>{
         alert('You Continue!');
     }
+
+    componentDidUpdate(){
+        console.log('[BurgerBuilder] componentDidUpdate');
+    }
     render() {
 
         const disabledInfo = {
