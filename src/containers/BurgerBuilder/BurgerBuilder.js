@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Aux from '../../hoc/Auxillary';
+import Aux from '../../hoc/Auxillary/Auxillary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
+import axios from '../../axios-orders';
 
 const INGREDIENT_PRICE = {
     salad: 0.5,
@@ -90,12 +91,31 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () =>{
-        alert('You Continue!');
+        // alert('You Continue!');
+
+        const order ={
+            ingredients : this.state.ingredients,
+            price: this.state.totalPrice,
+            customer : {
+                name: 'Sunil Gidd',
+                address: {
+                    street :'Teststreet 1',
+                    zipcode: '560067',
+                    country: 'India'
+                },
+                email:'sunilgidd@test.com'
+            },
+            deliveryMethod: 'fastest'
+        }
+        axios.post('/orders.json', order)
+        .then(response => console.log(response))
+        .catch(error => console.log(error));
     }
 
     componentDidUpdate(){
         console.log('[BurgerBuilder] componentDidUpdate');
     }
+    
     render() {
 
         const disabledInfo = {
