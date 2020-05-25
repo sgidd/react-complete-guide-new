@@ -127,7 +127,25 @@ class BurgerBuilder extends Component {
         //     this.setState({loading: false, purchasing: false});
         // });
 
-        this.props.history.push('/checkout');
+
+        // 223 -this.props.history.push('/checkout');
+
+        //225 - here defined const but chaging the value : we can modify the array lements in const 
+        //but can not assign new array or any new value to it 
+        //like const ab = []  and then ab= 1233
+        const queryParams = [];
+        for(let i in this.state.ingredients){
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+        }
+
+        const queryString = queryParams.join('&');
+
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        })
+
+
     }
 
     componentDidUpdate(){
