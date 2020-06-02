@@ -60,26 +60,7 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () =>{
-        // alert('You Continue!');
-
-        // 223 -this.props.history.push('/checkout');
-
-        //225 - here defined const but chaging the value : we can modify the array lements in const 
-        //but can not assign new array or any new value to it 
-        //like const ab = []  and then ab= 1233
-        const queryParams = [];
-        for(let i in this.state.ingredients){
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
-        }
-        queryParams.push('price=' + this.state.totalPrice);
-        const queryString = queryParams.join('&');
-
-        this.props.history.push({
-            pathname: '/checkout',
-            search: '?' + queryString
-        })
-
-
+     this.props.history.push('checkout');
     }
 
     componentDidUpdate(){
