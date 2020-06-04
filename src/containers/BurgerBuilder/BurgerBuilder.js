@@ -39,7 +39,7 @@ class BurgerBuilder extends Component {
         // .catch(error => {
         //     this.setState({error: true});
         // })
-        console.log('burgerbuilder mount')
+      
         this.props.onInitIngredients();
     }
 
