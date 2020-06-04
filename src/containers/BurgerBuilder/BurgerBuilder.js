@@ -25,20 +25,22 @@ class BurgerBuilder extends Component {
         // totalPrice :4,
         // purchasable: false,
         purchasing: false,
-        loading: false,
-        error: false
+        // loading: false,
+        // error: false
     }
 
     componentDidMount(){
-        axios.get('https://react-complete-guide-new.firebaseio.com/ingredients.json')
-        .then(response => {
-            // this.setState({ingredients: response.data});
-            console.log(response);
-            this.props.onIngredientAdded('salad')
-        })
-        .catch(error => {
-            this.setState({error: true});
-        })
+        // axios.get('https://react-complete-guide-new.firebaseio.com/ingredients.json')
+        // .then(response => {
+        //     // this.setState({ingredients: response.data});
+        //     console.log(response);
+        //     this.props.onIngredientAdded('salad')
+        // })
+        // .catch(error => {
+        //     this.setState({error: true});
+        // })
+        console.log('burgerbuilder mount')
+        this.props.onInitIngredients();
     }
 
     updatePurchaseState(ingredients) {
@@ -79,7 +81,7 @@ class BurgerBuilder extends Component {
         }
 
         let orderSummary = null;
-        let burger = this.state.error ? <p>Ingredients cant be displayed!</p> : <Spinner />
+        let burger = this.props.error ? <p>Ingredients cant be displayed!</p> : <Spinner />
         if(this.props.ings){
             burger = (
                 <Aux>
@@ -99,9 +101,9 @@ class BurgerBuilder extends Component {
             purchaseContinued={this.purchaseContinueHandler}
             price={this.props.price}/>
         }
-        if(this.state.loading) {
-            orderSummary = <Spinner />
-        }
+        // if(this.state.loading) {
+        //     orderSummary = <Spinner />
+        // }
         return (
             <Aux>
                  {/* <Backdrop show={this.state.purchasing} clicked={this.purchaseCancelHandler}/>  */}
@@ -118,14 +120,16 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
-        price: state.totalPrice
+        price: state.totalPrice,
+        error: state.error
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onIngredientAdded : (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
-        onIngredientRemoved : (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName))
+        onIngredientRemoved : (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
+        onInitIngredients: ()=> dispatch(burgerBuilderActions.initIngredients())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
