@@ -23,7 +23,6 @@ const addIngredient =  (state, action) => {
     }
     return updateObject(state, updatedState);
 }
-
 const removeIngredient = (state, action) => {
     const updatedIng = {[action.ingredientName] : state.ingredients[action.ingredientName] - 1};
     const updatedIngs = updateObject(state.ingredients, updatedIng);
@@ -33,7 +32,6 @@ const removeIngredient = (state, action) => {
     }
     return updateObject(state, updatedSt);
 }
-
 const setIngredients = (state, action) => {
     return updateObject(state, {
         ingredients:{
@@ -46,7 +44,6 @@ const setIngredients = (state, action) => {
         error: false
     })
 }
-
 const fetchIngredientsFailed = (state, action) => {
     return updateObject(state, {error: true});
 }
