@@ -206,7 +206,6 @@ const mapStateToProps = state => {
         token: state.auth.token
     }
 }
-
 const mapDispatchToProps = dispatch => {
     return {
         onOrderBurger : (orderData, token) => dispatch(actions.purchaseBurger(orderData, token))
