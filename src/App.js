@@ -15,7 +15,6 @@ class App extends Component {
     this.props.onTryAutoSignup();
   }
   render() {
-
     let routes = (
       <Switch>
         <Route path="/auth" component={Auth} />
@@ -23,7 +22,6 @@ class App extends Component {
         <Redirect to="/" />
       </Switch>
     )
-
     if(this.props.isAuthenticated){
       routes = (
         <Switch>
