@@ -59,7 +59,7 @@ const reducer = (state= initialState, action) => {
         case actionTypes.ADD_INGREDIENT: return addIngredient(state, action);
         case actionTypes.REMOVE_INGREDIENT: return removeIngredient(state, action);
         case actionTypes.SET_INGREDIENTS: return setIngredients(state, action);
-        case actionTypes.FETCH_INGREDIENTS_FALIED: return setIngredients(state, action);
+        case actionTypes.FETCH_INGREDIENTS_FALIED: return fetchIngredientsFailed(state, action);
         default: return state;
     }
 }

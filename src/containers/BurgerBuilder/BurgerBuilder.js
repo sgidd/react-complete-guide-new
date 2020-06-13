@@ -4,7 +4,6 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -14,32 +13,11 @@ import * as actions from '../../store/actions/index';
 
 class BurgerBuilder extends Component {
 
-    // constructor(props){
-    //     super(props);
-    //     this.state = {...};
-
-    // }
-
     state = {
-        // ingredients : null,
-        // totalPrice :4,
-        // purchasable: false,
         purchasing: false,
-        // loading: false,
-        // error: false
     }
 
     componentDidMount(){
-        // axios.get('https://react-complete-guide-new.firebaseio.com/ingredients.json')
-        // .then(response => {
-        //     // this.setState({ingredients: response.data});
-        //     console.log(response);
-        //     this.props.onIngredientAdded('salad')
-        // })
-        // .catch(error => {
-        //     this.setState({error: true});
-        // })
-      
         this.props.onInitIngredients();
     }
 
@@ -53,8 +31,6 @@ class BurgerBuilder extends Component {
                     } , 0)
         return sum>0;
     }
-
-
     purchaseHandler = () => {
         if(this.props.isAuthenticated){
             this.setState({purchasing: true});
@@ -109,13 +85,8 @@ class BurgerBuilder extends Component {
             purchaseContinued={this.purchaseContinueHandler}
             price={this.props.price}/>
         }
-        // if(this.state.loading) {
-        //     orderSummary = <Spinner />
-        // }
         return (
             <Aux>
-                 {/* <Backdrop show={this.state.purchasing} clicked={this.purchaseCancelHandler}/>  */}
-                 {/* as per max placing it in modal as its related to modal at this point */}
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                             {orderSummary}
                 </Modal>
